@@ -2,6 +2,7 @@ import "reflect-metadata"
 import { DataSource } from "typeorm"
 import { DocumentMetadata } from "../src/entities/documentMetadata"
 import {Document} from "./entities/documento"
+import {Model} from "../src/entities/model"
 
 export const AppDataSource = new DataSource({
   type: "mariadb",
@@ -10,7 +11,7 @@ export const AppDataSource = new DataSource({
   username: "root",
   password: "p",
   database: "provaDB",
-  entities: [Document,DocumentMetadata],
+  entities: [Document,DocumentMetadata,Model],
   synchronize: false,
   logging: false,
   dropSchema: false,
