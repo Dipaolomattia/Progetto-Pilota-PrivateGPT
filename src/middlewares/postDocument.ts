@@ -1,18 +1,13 @@
 import {Request, Response } from "express";
-import { DocumentService } from "../services/documentService"; // Importa UserService
-
-
-const documentService = new DocumentService();
-
-export async function postDoc(
+import { ModelService } from "../services/modelService"; // Importa UserService
+const modelService = new ModelService();
+export async function createdModel(
     req: Request,
     res: Response,
-
 ){
     try{
-        const documents  = await documentService.postDocument(req.body);
+        const documents  = await modelService.createModel(req.body.documentIds,req.body.modelName,req.body.description);
         res.status(200).json({success: true, data: documents});
-
     }
     catch(error){
         res.status(422).json({

@@ -1,5 +1,5 @@
 import express from "express";
-import {getDocs} from "../middlewares/getAllDocuments";
+import {createdModel} from "../middlewares/postDocument";
 const router = express.Router();
 
 const mockDocuments = {
@@ -24,8 +24,12 @@ const mockDocuments = {
     }
   ]
 };
+
 router.get("/getAllDocuments",(req, res) => {
     res.json(mockDocuments);
   });
+
+// questo non dovrebbe andare qua ma nel postmodel
+  router.post("/postmodel",createdModel);
 
 export default { router };
